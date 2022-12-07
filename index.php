@@ -28,18 +28,18 @@ class Movie
     public $rating;
     public $description;
 
-    public function filmEvaluation($rating)
+    public function filmEvaluation($movie)
     {
-        if ($rating >= 7) {
+        if ($movie->rating >= 7) {
             return "Recommended Movie";
-        } elseif ($rating >= 5 && $rating <= 6) {
+        } elseif ($movie->rating >= 5 && $movie->rating <= 6) {
             return "Average Movie";
         } else {
             return "Bad Movie ! Bad !";
         }
     }
 
-    function __construct($title, $duration, $rating, $description)
+    function __construct(string $title, $duration, $rating, string  $description)
     {
         $this->title = $title;
         $this->duration = $duration;
@@ -48,46 +48,63 @@ class Movie
     }
 }
 
-$pulpFiction = new Movie("Pulp Fiction", 154, 9, "lorem ipsum dolor sit amet");
-$nightmareBeforeChristmas = new Movie("Nightmare Before Christmas", 76, 9, "lorem ipsum dolor");
+$movies = [
+    $pulpFiction = new Movie("Pulp Fiction", 154, 9, "lorem ipsum dolor sit amet"),
+    $nightmareBeforeChristmas = new Movie("Nightmare Before Christmas", 76, 9, "lorem ipsum dolor")
+];
 
-echo $pulpFiction;
+
+
 
 ?>
 
-<!-- class Movie
-{
+<!DOCTYPE html>
+<html lang="en">
 
-public $title;
-public $desc;
-public $link;
-/* Define a static prop */
-public static $type = 'Movie';
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+    <title>Movies</title>
+</head>
 
-/**
-* @param string $title - a string with the movie name
-* */
-function __construct($title, $desc, $link)
-{
-$this->title = $title;
-$this->desc = $desc;
-$this->link = $link;
-}
+<body>
+    <div class="container pt-5">
+        <div class="row pt-5">
+            <?php foreach ($movies as $movie) : ?>
+                <div class="col-6">
+                    <div class="card">
+                        <div class="card-body">
+                            <h3 class="card-title">
+                                <?= $movie->title ?>
+                            </h3>
+                            <!-- /title -->
+                            <h5>
+                                Rating: <?= $movie->rating ?>
+                            </h5>
+                            <!-- /rating -->
+                            <h5>
+                                Duration: <?= $movie->duration ?>
+                            </h5>
+                            <!-- /duration -->
+                            <h5>Description: </h5>
+                            <p class="card-text">
+                                <?= $movie->description ?>
+                            </p>
+                            <!-- /description -->
+                            <h5>Personal Evaluation: </h5>
+                            <p class="card-text">
+                                <?= $movie->filmEvaluation($movie) ?>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            <?php endforeach ?>
+        </div>
+    </div>
+    <!-- SCRIPT -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
+</body>
 
-public static function returnDetails()
-{
-echo 'Movie details';
-}
-}
-
-$movie = new Movie('Murder', 'lorem murder', 'https://');
-/* Access static prop */
-var_dump(Movie::$type);
-/* Access stati methods */
-
-Movie::returnDetails();
-
-/* $matrix = new Movie('Matrix', 'lorem matrix', 'https://matrix.com');
-$avatar = new Movie('Avatar', 'lorem avatar', 'https://avatar.com');
-var_dump($matrix);
-var_dump($avatar); -->
+</html>
