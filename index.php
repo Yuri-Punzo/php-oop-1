@@ -21,4 +21,73 @@ Possiamo ad esempio organizzare il codice
 
 <?php
 
+class Movie
+{
+    public $title;
+    public $duration;
+    public $rating;
+    public $description;
+
+    public function filmEvaluation($rating)
+    {
+        if ($rating >= 7) {
+            return "Recommended Movie";
+        } elseif ($rating >= 5 && $rating <= 6) {
+            return "Average Movie";
+        } else {
+            return "Bad Movie ! Bad !";
+        }
+    }
+
+    function __construct($title, $duration, $rating, $description)
+    {
+        $this->title = $title;
+        $this->duration = $duration;
+        $this->rating = $rating;
+        $this->description = $description;
+    }
+}
+
+$pulpFiction = new Movie("Pulp Fiction", 154, 9, "lorem ipsum dolor sit amet");
+$nightmareBeforeChristmas = new Movie("Nightmare Before Christmas", 76, 9, "lorem ipsum dolor");
+
+echo $pulpFiction;
+
 ?>
+
+<!-- class Movie
+{
+
+public $title;
+public $desc;
+public $link;
+/* Define a static prop */
+public static $type = 'Movie';
+
+/**
+* @param string $title - a string with the movie name
+* */
+function __construct($title, $desc, $link)
+{
+$this->title = $title;
+$this->desc = $desc;
+$this->link = $link;
+}
+
+public static function returnDetails()
+{
+echo 'Movie details';
+}
+}
+
+$movie = new Movie('Murder', 'lorem murder', 'https://');
+/* Access static prop */
+var_dump(Movie::$type);
+/* Access stati methods */
+
+Movie::returnDetails();
+
+/* $matrix = new Movie('Matrix', 'lorem matrix', 'https://matrix.com');
+$avatar = new Movie('Avatar', 'lorem avatar', 'https://avatar.com');
+var_dump($matrix);
+var_dump($avatar); -->
