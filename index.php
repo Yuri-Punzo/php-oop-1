@@ -49,8 +49,8 @@ class Movie
 }
 
 $movies = [
-    $pulpFiction = new Movie("Pulp Fiction", 154, 9, "lorem ipsum dolor sit amet"),
-    $nightmareBeforeChristmas = new Movie("Nightmare Before Christmas", 76, 9, "lorem ipsum dolor")
+    $pulpFiction = new Movie("Pulp Fiction", 154, 9, "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Cupiditate et, neque possimus voluptatum dolore tenetur eveniet maxime adipisci laboriosam quis voluptate tempora, minus qui praesentium. In, consequuntur."),
+    $nightmareBeforeChristmas = new Movie("Nightmare Before Christmas", 76, 9, "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Cupiditate et, neque possimus voluptatum dolore tenetur eveniet maxime adipisci laboriosam quis voluptate tempora, minus qui praesentium. In, consequuntur.")
 ];
 
 
@@ -80,23 +80,24 @@ $movies = [
                                 <?= $movie->title ?>
                             </h3>
                             <!-- /title -->
-                            <h5>
+                            <h5 class="pt-2">
                                 Rating: <?= $movie->rating ?>
                             </h5>
                             <!-- /rating -->
-                            <h5>
+                            <h5 class="pt-1">
                                 Duration: <?= $movie->duration ?>
                             </h5>
                             <!-- /duration -->
-                            <h5>Description: </h5>
+                            <h5 class="pt-1">Description: </h5>
                             <p class="card-text">
                                 <?= $movie->description ?>
                             </p>
                             <!-- /description -->
-                            <h5>Personal Evaluation: </h5>
+                            <h5 class="pt-1">Personal Evaluation: </h5>
                             <p class="card-text">
                                 <?= $movie->filmEvaluation($movie) ?>
                             </p>
+                            <!-- personal evalutaion -->
                         </div>
                     </div>
                 </div>
